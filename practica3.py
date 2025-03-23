@@ -102,16 +102,17 @@ def imprimir_tupla(tup):
         print("No es una tupla")
         return "No es una tupla"
 
-@app.route("/tupla/agregar/<path:tup>/elemento")
+@app.route("/tupla/agregar/<path:tup>/<elemento>")
 #9. Función que agregue un elemento a una tupla y lo guarde los cambios en una tupla nueva, regresar la nueva tupla
 def agregar_elemento_tupla(tup, elemento):
     lista = json.loads(tup)
+    tupla = tuple(lista)
     print(f"Agregar elemento tupla \nParametros:\n\tTupla: {tupla}\n\tElemento: {elemento}")
     lista.append(elemento)
     nuevaTupla = tuple(lista)
     return f"Tupla: {nuevaTupla}"
 
-@app.route("/tupla/eliminar/<path:tup>/elemento")
+@app.route("/tupla/eliminar/<path:tup>/<elemento>")
 #10. Función que elimine un elemento a una tupla y lo guarde los cambios en una tupla nueva, regresar la nueva tupla
 def eliminar_elemento_tupla(tup, elemento):
     lista = json.loads(tup)
